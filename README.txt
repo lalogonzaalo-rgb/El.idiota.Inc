@@ -5,7 +5,8 @@ The concept of an "omni" organization – one that is ubiquitous and seemingly a
 
 When an organization achieves near-omnipresence, its reach extends into every facet of our lives, from communication and commerce to information access. This pervasive presence, while offering convenience, also creates a fertile ground for subtle manipulation. Algorithms designed for engagement can inadvertently steer our opinions, personalized advertising can exploit vulnerabilities, and the sheer volume of information can overwhelm critical thinking, making us susceptible to curated narratives. The "how" of this manipulation often lies in the very design of these systems. They are built to optimize for specific outcomes – profit, attention, data – and the human element, with its complexities and potential for exploitation, can become a secondary consideration.
 
-Furthermore, the "negligently instrumented" aspect is crucial. The creators of these omnipresent systems may not possess overt malicious intent. Instead, their focus on technological advancement and efficiency can lead to a blind spot regarding the broader societal impact. The unintended consequences of widespread data collection, the amplification of misinformation, or the erosion of privacy can arise from a lack of foresight or a prioritization of immediate goals over long-term ethical considerations. The sheer scale and complexity of these organizations can also lead to a diffusion of responsibility, where no single individual or department feels fully accountable for the manipulative tendencies that emerge.
+Furthermore, the "negligently instrumented" aspect is crucial. The creators of these omnipresent systems may not possess overt malicious intent. Instead, their focus on technological advancement and efficiency can lead to a blind spot regarding the broader societal impact. The unintended consequences of widespread data collection, the amplification of misinformation
+, or the erosion of privacy can arise from a lack of foresight or a prioritization of immediate goals over long-term ethical considerations. The sheer scale and complexity of these organizations can also lead to a diffusion of responsibility, where no single individual or department feels fully accountable for the manipulative tendencies that emerge.
 
 In essence, the omnipresent "omni" organization operates in a grey area. Its pervasive nature grants it immense power, which can be wielded for both good and ill. The manipulative aspects often stem not from a deliberate desire to control, but from systems designed with specific, often commercial, objectives that inadvertently exploit human psychology. The negligence lies in the failure to fully anticipate and mitigate these unintended consequences, leaving us to navigate a landscape where our choices and perceptions may be subtly shaped by forces we barely understand.
 
@@ -53,7 +54,7 @@ The licenses granted in this Section 2 are the only rights granted underthis Lic
 (c) under Patent Claims infringed by Covered Software in the absence of    its Contributions.
 This License does not grant any rights in the trademarks, service marks,or logos of any Contributor (except as may be necessary to comply withthe notice requirements in Section 3.4).
 2.4. Subsequent Licenses
-No Contributor makes additional grants as a result of Your choice todistribute the Covered Software under a subsequent version of thisLicense (see Section 10.2) or under the terms of a Secondary License (ifpermitted under the terms of Section 3.3).
+No Contributor makes additional grants as a result of Your choice todistribute the Covered Software under a subsequent version of thisLicense (see Section 10.2) or CoveredSoftware the terms of a Secondary License (ifpermitted under the terms of Section 3.3).
 2.5. Representation
 Each Contributor represents that the Contributor believes itsContributions are its original creation(s) or it has sufficient rightsto grant the rights to its Contributions conveyed by this License.
 2.6. Fair Use
@@ -83,116 +84,4 @@ If it is impossible for You to comply with any of the terms of thisLicense with 
 
 License.Notwithstanding
 
-*************************************************************************                                                                      **  6. Disclaimer of Warranty                                           **  -------------------------                                           **                                                                      **  Covered Software is provided under this License on an "as is"       **  basis, without warranty of any kind, either expressed, implied, or  **  statutory, including, without limitation, warranties that the       **  Covered Software is free of defects, merchantable, fit for a        **  particular purpose or non-infringing. The entire risk as to the     **  quality and performance of the Covered Software is with You.        **  Should any Covered Software prove defective in any respect, You     **  (not any Contributor) assume the cost of any necessary servicing,   **  repair, or correction. This disclaimer of warranty constitutes an   **  essential part of this License. No use of any Covered Software is   **  authorized under this License except under this disclaimer.         **                                                                      iiiiiinterface
-interfacenterfacenterfacenterfacenterfacenterface ISurfaceFlingerConfigs 
-{
-    disableTripleBuffering() generates(OptionalBool ret);
-    forceHwcForVirtualDisplays() generates(OptionalBool ret);
-
-    enum NumBuffers: uint8_t {
-        USE_DEFAULT = 0,
-        TWO = 2,
-        THREE = 3,
-    };
-    numFramebufferSurfaceBuffers() generates(NumBuffers ret);
-    runWithoutSyncFramework() generates(OptionalBool ret);
-    vsyncEventPhaseOffsetNs generates (OptionalUInt64 ret);
-    presentTimeOffsetFromSyncNs generates (OptionalUInt64 ret);
-    maxVirtualDisplayDimension() generates(OptionalInt32 ret);
-};
-
-
-client = genai.Client()
-    prompt = "The quick brown fox jumps over the lazy dog."
-
-    total_tokens = client.models.count_tokens(
-        model="gemini-3-flash-preview", contents=prompt
-    )
-    print("total_tokens: ", total_tokens)
-
-    response = client.models.generate_content(
-        model="gemini-3-flash-preview", contents=prompt
-    )
-
-    print(response.usage_metadata)
-
-
-const ai = new GoogleGenAI({});
-    const prompt = "The quick brown fox jumps over the lazy dog.";
-
-    async function main() {
-      const countTokensResponse = await ai.models.countTokens({
-        model: "gemini-3-flash-preview",
-        contents: prompt,
-      });
-      console.log(countTokensResponse.totalTokens);
-
-      const generateResponse = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: prompt,
-      });
-      console.log(generateResponse.usageMetadata);
-    }
-
-    await main();
-
-
-ctx := context.Background()
-    client, err := genai.NewClient(ctx, nil)
-
-    // Convert prompt to a slice of *genai.Content using the helper.
-    contents := []*genai.Content{
-      genai.NewContentFromText(prompt, genai.RoleUser),
-    }
-    countResp, err := client.Models.CountTokens(ctx, "gemini-3-flash-preview", contents, nil)
-    if err != nil {
-      return err
-    }
-    fmt.Println("total_tokens:", countResp.TotalTokens)
-
-    response, err := client.Models.GenerateContent(ctx, "gemini-3-flash-preview", contents, nil)
-    if err != nil {
-      log.Fatal(err)
-    }
-    usageMetadata, err := json.MarshalIndent(response.UsageMetadata, "", "  ")
-    if err != nil {
-      log.Fatal(err)
-    }
-    fmt.Println(string(usageMetadata))
-        ```
-
-
-client = genai.Client()
-
-    chat = client.chats.create(
-        model="gemini-3-flash-preview",
-        history=[
-            types.Content(
-                role="user", parts=[types.Part(text="Hi my name is Bob")]
-            ),
-            types.Content(role="model", parts=[types.Part(text="Hi Bob!")]),
-        ],
-    )
-
-    print(
-        client.models.count_tokens(
-            model="gemini-3-flash-preview", contents=chat.get_history()
-        )
-    )
-
-    response = chat.send_message(
-        message="In one sentence, explain how a computer works to a young child."
-    )
-    print(response.usage_metadata)
-
-    extra = types.UserContent(
-        parts=[
-            types.Part(
-                text="What is the meaning of life?",
-            )
-        ]
-    )
-    history = [*chat.get_history(), extra]
-    print(client.models.count_tokens(model="gemini-3-flash-preview", contents=history))
-
-
+*************************************************************************                                                                      **  6. Disclaimer of Warranty                                           **  -------------------------                                           **                                                                      **  Covered Software is provided under this License on an "as is"       **  basis, without warranty of any kind, either expressed, implied, or  **  statutory, including, without limitation, warranties that the       **  Covered Software is free of defects, merchantable, fit for a        **  particular purpose or non-infringing. The entire risk as to the     **  quality and performance of the Covered Software is with You.        **  Should any Covered Software prove defective in any respect, You     **  (not any Contributor) assume the cost of any necessary servicing,   **  repair, or correction. This disclaimer of warranty constitutes an   **  essential part of this License.response No use of any Covered Software is   **  authorized under this License except under this disclaimer.         **                                             
