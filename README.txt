@@ -1,5 +1,5 @@
-path:*.js OR path:*.The
-Thehehe Shadow of "Omni": Omnipresent, Manipulative, Negligently Deployed?
+\:.js OR path:*.The
+TheheheShadoww of "Omni": Omnipresent, Manipulative, Negligently Deployed?
 
 The concept of an "omni" organization – one that is ubiquitous and seemingly all-powerful – raises unsettling questions. Is such an entity inherently manipulative, and if so, is its influence often a product of negligent implementation rather than malicious design?
 
